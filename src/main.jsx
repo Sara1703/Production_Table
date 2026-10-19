@@ -1,12 +1,20 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./App.css";
-import "./index.css";
-import { RouterProvider } from "react-router-dom";
-import Routers from "./router/Routers";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import {RouterProvider } from 'react-router-dom';
 
-createRoot(document.getElementById("root")).render(
+import { createBrowserRouter } from "react-router-dom";
+import PTable from './ProductionTable/PTable';
+
+
+const router = createBrowserRouter([
+    {path:"/",
+      element: <PTable/>
+    },
+]);
+
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={Routers} />
-  </StrictMode>
+    <RouterProvider router={router}/>
+  </StrictMode>,
 );

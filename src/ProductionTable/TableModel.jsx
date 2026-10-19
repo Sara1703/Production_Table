@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const TableModel = (props) => {
-  const { nodes, materials } = useGLTF('<models-3d></models-3d>/table.glb')
+  const { nodes, materials } = useGLTF('models-3d/table.glb')
   return (
     <group {...props} dispose={null}>
       <group>

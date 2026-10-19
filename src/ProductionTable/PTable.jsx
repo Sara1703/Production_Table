@@ -1,6 +1,6 @@
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import TableModel from "./TableModel";
 
 const PTable = () => {
     return(
@@ -12,6 +12,7 @@ const PTable = () => {
                 <directionalLight position={[10, 10, 10]} intensity={5}/>
                 <Environment files = "/environment/FilmEnv.hdr" background/>
                 <TableModel/>
+
             </Canvas>
         </div>
         </>
