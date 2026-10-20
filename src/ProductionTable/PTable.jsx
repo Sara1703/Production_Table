@@ -6,12 +6,12 @@ const PTable = () => {
     return(
         <>
         <div className="container">
-            <Canvas shadows = {true} camera={{position: [0, 1, 2], fov: 75}}>
+            <Canvas shadows = {true} camera={{position: [-8, 12, -0.7], fov: 50}} >
                 <OrbitControls/>
                 <ambientLight/>
-                <directionalLight position={[10, 10, 10]} intensity={5}/>
+                <directionalLight position={[5, 0.1, 4]} intensity={5}/>
                 <Environment files = "/environment/FilmEnv.hdr" background/>
-                <TableModel/>
+                <TableModel scale={0.5} position={[5, -40, -13]}/>
 
             </Canvas>
         </div>

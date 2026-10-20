@@ -6,8 +6,8 @@ const TableModel = (props) => {
   return (
     <group {...props} dispose={null}>
       <group>
-        <group rotation={[-Math.PI / 2, 0, 0]}>
-          <group rotation={[Math.PI / 2, 0, 0]}>
+        <group rotation={[-Math.PI / 2, 0, 1]}>
+          <group rotation={[Math.PI / 2, 0.5, 0]}>
             <group>
               <group position={[49, -30.5, 44.058]} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
                 <mesh
