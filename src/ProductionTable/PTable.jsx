@@ -1,6 +1,7 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import TableModel from "./TableModel";
+import Tcamera from "./Tcamera";
 
 const PTable = () => {
     return(
@@ -12,8 +13,8 @@ const PTable = () => {
                 <directionalLight position={[5, 0.1, 4]} intensity={5}/>
                 <Environment files = "/environment/FilmEnv.hdr" background/>
                 <TableModel scale={0.5} position={[5, -40, -13]}/>
-
-            </Canvas>
+                <Tcamera scale={8} position={[0, -10, 0]}/>
+            </Canvas >
         </div>
         </>
     );
