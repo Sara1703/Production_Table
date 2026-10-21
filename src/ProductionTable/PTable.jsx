@@ -13,7 +13,7 @@ const PTable = () => {
                 <directionalLight position={[5, 0.1, 4]} intensity={5}/>
                 <Environment files = "/environment/FilmEnv.hdr" background/>
                 <TableModel scale={0.5} position={[5, -40, -13]}/>
-                <Tcamera scale={8} position={[0, -10, 0]}/>
+                <Tcamera scale={8} position={[17, -63, 55]} />
             </Canvas >
         </div>
         </>

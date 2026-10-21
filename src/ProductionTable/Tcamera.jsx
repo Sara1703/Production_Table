@@ -10,8 +10,8 @@ const Tcamera = (props) => {
 
     return (
       <group {...props} dispose={null}>
-        <group>
-          <group position={[-0.002, -10, 0]} rotation={[Math.PI / 2, 0, 1.374]} scale={0.01} />
+        <group rotation={[Math.PI /-32, -1.6, 0]}>
+          <group position={[-0.002, -10, 0]} rotation={[0, Math.PI ,0 ]} scale={0.01} />
           <mesh
             geometry={nodes.main_body_Cube001.geometry}
             material={materials.main_body}
