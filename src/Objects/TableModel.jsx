@@ -4,19 +4,22 @@ import { useGLTF } from '@react-three/drei'
 const TableModel = (props) => {
   const { nodes, materials } = useGLTF('models-3d/table.glb')
 
-  useEffect(() => {
-      const mat = materials ['main_body']
-      if (mat) mat.color.set("green") // materials.main_body.color.set('green')
-    }, [materials])
+  /*useEffect(() => {
+      materials.main_body.color.set('green')
+    }, [materials])*/
 
   return (
+
     <group {...props} dispose={null}>
+      
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.tablero.geometry}
         material={materials['material_#d9dcdf']}
-        position={[0, -0.11, 0]}       
+        material-color = "#706666"
+        position={[0, -0.11, 0]} 
+             
       />
       <mesh
         castShadow

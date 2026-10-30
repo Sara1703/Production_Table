@@ -1,0 +1,16 @@
+.square {
+  width: 90vw;
+  max-width: 750px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f4f4f4;
+  position: relative;
+}
+
+.square canvas {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
