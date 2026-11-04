@@ -11,11 +11,13 @@ const TP_caa = (props) => {
             geometry={nodes.asiento.geometry}
             material={materials['material_#242a31']}
             position={[0, 0.52, 0]}
+            castShadow receiveShadow
           />
           <mesh
             geometry={nodes.respaldo.geometry}
             material={materials['material_#242a31']}
             position={[0, 0.84, -0.24]}
+            
           />
           <mesh
             geometry={nodes.pata_silla.geometry}

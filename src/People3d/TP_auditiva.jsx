@@ -1,9 +1,13 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 
 const TP_auditiva = (props) => {
   const { nodes, materials } = useGLTF('models-3d/people3d/P_auditiva.glb')
+
+  useEffect(() => {
+    materials['material_#b30819'].color.set('purple')
+  }, [materials])
   return (
     <group {...props} dispose={null}>
       <group>
@@ -12,6 +16,7 @@ const TP_auditiva = (props) => {
             geometry={nodes.asiento.geometry}
             material={materials['material_#242a31']}
             position={[0, 0.52, 0]}
+            castShadow receiveShadow
           />
           <mesh
             geometry={nodes.respaldo.geometry}
@@ -235,6 +240,7 @@ const TP_auditiva = (props) => {
             material={materials['material_#b30819']}
             position={[0.31, 0.98, 0.09]}
             rotation={[2.214, -0.704, -0.364]}
+            
           />
           <mesh
             geometry={nodes.codo_1.geometry}
