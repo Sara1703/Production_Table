@@ -1,8 +1,14 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const TP_motriz = (props) => {
   const { nodes, materials } = useGLTF('models-3d/people3d/P_motriz.glb')
+
+
+  useEffect(() => {
+    materials['material_#7e4148'].color.set('black')
+  },[materials])
+  
   return (
     <group {...props} dispose={null}>
       <mesh

@@ -1,16 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const TP_visual = (props) => {
   const { nodes, materials } = useGLTF('models-3d/people3d/P_visual.glb')
+
+  useEffect(() => {
+      materials['material_#5d6b60'].color.set('green')
+    },[materials])
+
   return (
     <group {...props} dispose={null}>
       <group>
         <group>
           <mesh
+
             geometry={nodes.asiento.geometry}
             material={materials['material_#242a31']}
             position={[0, 0.548, 0]}
+            castShadow receiveShadow
           />
           <mesh
             geometry={nodes.respaldo.geometry}

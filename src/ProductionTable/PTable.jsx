@@ -11,6 +11,8 @@ import TP_caa from "../People3d/TP_caa";
 import TP_motriz from "../People3d/TP_motriz";
 import TP_visual from "../People3d/TP_visual";
 import "./PTable.css";
+import Lights from "../lights/Lights";
+import TCamera from "../Objects/TCamera";
 
 
 
@@ -19,14 +21,14 @@ const PTable = () => {
         <>
         <div style={{ display: "flex", justifyContent: "center", padding: "100px" }}>
             <div className="square"> 
-                <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 50}} >
+                <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 39}} >
                     <OrbitControls                    
                     enablePan={false}
                     minPolarAngle={Math.PI /6}
                     maxPolarAngle={Math.PI / 2.1}
                     minDistance={2}
                     maxDistance={8}
-                    target={[0, 0, 0]}      
+                    target={[0, 0.5, 0]}      
                     zoomSpeed={0.8}
                     />
                         <ambientLight/>
@@ -40,12 +42,14 @@ const PTable = () => {
                         <TableModel scale={0.5} position={[0, 0, 0]}/>
                         <TCinemaScreen scale={0.42} position={[-1, 0, -1.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                         <PTable_redonde scale={0.5} position={[0, 0.04, 0]}/>
-                        //people
+                        <TCamera scale={0.23} position={[-2.1, -0.33, -0.5]} rotation={[Math.PI /-80, 3.1, 0]}/>
+                        <Lights/>
 
-                        <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} castShadow receiveShadow/>
-                        <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} castShadow receiveShadow/>
-                        <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} castShadow receiveShadow/>
-                        <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} castShadow receiveShadow/>
+                        //people
+                        <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} />
+                        <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
+                        <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
+                        <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                     
                 </Canvas >
             </div>           
