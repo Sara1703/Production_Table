@@ -15,22 +15,38 @@ import Lights from "../lights/Lights";
 import TCamera from "../Objects/TCamera";
 
 
-
 const PTable = () => {
     return(
-        <>
-        <div style={{ display: "flex", justifyContent: "center", padding: "100px" }}>
-            <div className="square"> 
-                <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 39}} >
-                    <OrbitControls                    
-                    enablePan={false}
-                    minPolarAngle={Math.PI /6}
-                    maxPolarAngle={Math.PI / 2.1}
-                    minDistance={2}
-                    maxDistance={8}
-                    target={[0, 0.5, 0]}      
-                    zoomSpeed={0.8}
-                    />
+        <main className="page">
+            <header className="main">
+                <h1 className="mainTitle">
+                    CONTRA<span className="Mtitle">PLANO</span></h1>
+                <p className="subTitle">
+                    Una Cali audiovisual, inclusiva y accesible.
+                </p>
+                <p className="nTittle">
+                    Universidad del Valle · Universidad Autónoma de Occidente
+                </p>
+            </header>
+            
+            <div className="back">
+                <p className="instruction">
+                Selecciona una etapa o cada personaje para abrir su ficha. También puedes usar los botones.
+                </p>
+
+                <div className="square">
+                    <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 39}} >
+                        <OrbitControls                    
+                        enablePan={false}
+                        minPolarAngle={Math.PI /6}
+                        maxPolarAngle={Math.PI / 2.1}
+                        minDistance={2}
+                        maxDistance={8}
+                        target={[0, 0.5, 0]}      
+                        zoomSpeed={0.8}
+                        />
+                
+
                         <ambientLight/>
                         <directionalLight position={[-5, 4, -3]} intensity={5} shadows={true} />
                         <Environment files = "/environment/env.hdr" background/>
@@ -51,10 +67,11 @@ const PTable = () => {
                         <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                         <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                     
-                </Canvas >
-            </div>           
-            </div>
-        </>
+                    </Canvas >
+                    
+                </div>           
+                </div>
+        </main>
     );
 };
 
