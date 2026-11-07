@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 
 const PTable_redonde = (props) =>{
   const { nodes, materials } = useGLTF('models-3d/table_ronde.glb')
@@ -7,6 +7,9 @@ const PTable_redonde = (props) =>{
   
   return (
     <group {...props} dispose={null}>
+      <Html position={[-1, -1, 0]} center distanceFactor={5}>
+        <button className='tableButton'>Personas participantes</button>
+      </Html>
       <mesh
         castShadow
         receiveShadow
