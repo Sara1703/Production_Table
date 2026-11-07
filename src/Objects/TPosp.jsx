@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 
 const TPosp = (props) => {
 
@@ -7,6 +7,9 @@ const TPosp = (props) => {
     const { nodes, materials } = useGLTF('models-3d/posproduccion.glb')
     return (
     <group {...props} dispose={null}>
+      <Html position={[0, -0.5, 1.2]} center distanceFactor={5}>
+        <button className="button_posp">Posproducción</button>
+      </Html>
       <group>
         <group>
           <mesh

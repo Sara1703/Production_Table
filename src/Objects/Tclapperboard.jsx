@@ -1,10 +1,13 @@
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 
 const Tclapperboard = (props) => {
   const { nodes, materials } = useGLTF('models-3d/rodaje.glb')
   return (
     <group {...props} dispose={null}>
+      <Html position={[0, 0, 1]} center distanceFactor={5}>
+        <button className="button_cb">Rodaje</button>
+      </Html>
       <group>
         <group>
           <group position={[0, 0.47, 0]} rotation={[-0.28, 0, 0]}>
