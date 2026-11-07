@@ -1,10 +1,10 @@
 .square {
   position: relative;
   top: 0px;
-  width: 90vw;
+  width: auto;
+  height: 60vh;
   max-width: 750px;
   margin: 0 auto;
-  aspect-ratio: 16 / 9;
   border-radius: 16px;
   overflow: hidden;
   background: #f4f4f4;
@@ -20,13 +20,13 @@
   margin-top: 0px;
 }
 
-.instruction{
+/*.instruction{
 
   margin-left: 34px;
   align-self: stretch;
   font-size: 0.95rem;
   font-family: 'Inter', sans-serif;
-}
+}*/
 
 .square canvas {
   display: block !important;
@@ -85,4 +85,45 @@
 
 .button_posp {
   background-color: #f1eded;
+}
+
+.instruction,
+.instructionB {
+  
+  font-size: 1rem;
+  margin-top: 13px;
+  color: #070707;
+  font-family: 'Inter', sans-serif;
+  
+}
+
+/*botones debajo de la escena*/
+
+.panel_buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.one{
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid #d9d9d9;
+  border-color: #110e0e;
+  color: #161616;
+
+}
+
+.panel_Pbuttons{
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.two{
+  padding: 12px 20px;
+  border-radius: 14px;
+  border: 1px solid #d9d9d9;
+  border-color: #110e0e;
+  color: #161616;
+
 }

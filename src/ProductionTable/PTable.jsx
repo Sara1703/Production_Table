@@ -33,7 +33,6 @@ const PTable = () => {
                 <p className="instruction">
                 Selecciona una etapa o cada personaje para abrir su ficha. También puedes usar los botones.
                 </p>
-
                 <div className="square">
                     <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 39}} >
                         <OrbitControls                    
@@ -58,7 +57,7 @@ const PTable = () => {
                         <TableModel scale={0.5} position={[0, 0, 0]}/>
                         <TCinemaScreen scale={0.42} position={[-1, 0, -1.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                         <PTable_redonde scale={0.5} position={[0, 0.04, 0]}/>
-                        <TCamera scale={0.23} position={[-2.1, -0.33, -0.5]} rotation={[Math.PI /-80, 3.1, 0]}/>
+                        <TCamera scale={0.23} position={[-2.1, -0.33, -0.45]} rotation={[Math.PI /-80, 3.1, 0]}/>
                         <Lights/>
 
                         //people
@@ -67,10 +66,24 @@ const PTable = () => {
                         <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                         <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]}/>
                     
-                    </Canvas >
-                    
-                </div>           
+                    </Canvas >                  
+                </div> 
+                <p className="instructionB">Haz clic en una etapa o en cada personaje. También puedes usar los botones.</p>
+                <div className="panel_buttons">
+                    <button className="one">1. Desarrollo y preproducción</button>
+                    <button className="one">2. Rodaje</button>
+                    <button className="one">3. Posproducción</button>
+                    <button className="one">4. Distribución y exhibición</button>
+                </div>  
+                <div className="panel_Pbuttons">
+                    <button className="two">Personas participantes</button>
+                    <button className="two">Persona con discapacidad visual</button>
+                    <button className="two">Persona con discapacidad auditiva</button>
+                    <button className="two">Persona con discapacidad motriz</button>
+                    <button className="two">Comunicación mediante dispositivos</button>
                 </div>
+                     
+            </div>
         </main>
     );
 };
