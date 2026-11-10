@@ -11,6 +11,7 @@
   position: relative;
 }
 
+
 .back {
   background-color: rgb(239, 240, 241);
   display: flex;
@@ -20,13 +21,6 @@
   margin-top: 0px;
 }
 
-/*.instruction{
-
-  margin-left: 34px;
-  align-self: stretch;
-  font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
-}*/
 
 .square canvas {
   display: block !important;
@@ -37,32 +31,54 @@
 .main {
 
   border-bottom: 1px solid #e3e3e3;
-  /*padding-bottom: 0px;*/
+  position: relative;
+ 
+}
+
+/*logos universidades*/
+
+.LogoU {
+  position: absolute;
+  top: -13px;
+  right: -10px;
+  height:100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.LogoUAO {
+  position: absolute;
+  top: -13px;
+  right: 140px;
+  height:100px;
+  width: auto;
+  object-fit: contain;
 }
 .mainTitle { 
 
   font-family: 'Inter', sans-serif;
-  font-size: 2 rem;
+  line-height: 1.0;
+  font-size: 2.3rem;
   color: #0a0a0a;
   margin-left: 34px;
 }
 
 .Mtitle{
-    color: #923030;
+    color: #be2727;
     font: inherit; 
 }
 
 .subTitle {
 
   margin: 0 0 6px;
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin-left: 34px;
-  margin-top: -9px;
+  margin-top: -15px;
   color: #0a0a0a;
   font-family: 'Inter', sans-serif;
 }
 
-.nTittle {
+.thirdTittle {
 
   margin: 0 0 6px;
   font-size: 0.8rem;
@@ -72,20 +88,16 @@
   font-family: 'Inter', sans-serif;
 }
 
-
 /*botones*/
 
-.button_script {
+.button_script,
+.button_cb,
+.button_posp,
+.button_Cinema,
+.tableButton {
  background-color: #f1eded;
 }
 
-.button_cb {
-  background-color: #f1eded;
-}
-
-.button_posp {
-  background-color: #f1eded;
-}
 
 .instruction,
 .instructionB {
@@ -104,13 +116,21 @@
   flex-wrap: wrap;
   gap: 12px;
 }
-.one{
+.one,
+.two{
   padding: 12px 20px;
   border-radius: 14px;
   border: 1px solid #d9d9d9;
   border-color: #110e0e;
   color: #161616;
+  font-family: 'Inter', sans-serif;
 
+}
+.one--active,
+.two--active{
+  background: #b3121b;
+  border-color: #b3121b;
+  color: #ffffff;
 }
 
 .panel_Pbuttons{
@@ -119,11 +139,39 @@
   flex-wrap: wrap;
   gap: 12px;
 }
-.two{
-  padding: 12px 20px;
-  border-radius: 14px;
-  border: 1px solid #d9d9d9;
-  border-color: #110e0e;
-  color: #161616;
 
+.ficha {
+  width: 90vw;
+  max-width: 750px;
+  margin: 12px auto 0;
+  padding: 18px 22px;
+  background: #fff;
+  border-left: 4px solid #b3121b;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
 }
+
+.ficha_titulo {
+
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.ficha_texto{
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #333;
+}
+/*<div className="logo">
+                        <Canvas shadows = {true} camera={{position: [ 0, 1 , 0], fov: 60}}>
+                            <ambientLight intensity={1.2}/>
+                            <OrbitControls/>
+                            <directionalLight position={[-5, 4, -3]} intensity={5} shadows={true} />
+                            <UnivalleL position= {[2, 0, 0.5]}rotation={[Math.PI /-100, 0, 0.1]}/>
+                        </Canvas>
+                    </div>
+                    */
