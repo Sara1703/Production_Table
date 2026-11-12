@@ -6,10 +6,15 @@ const TPosp = (props) => {
     const group = useRef()
     const { nodes, materials } = useGLTF('models-3d/posproduccion.glb')
     return (
-    <group {...props} dispose={null}>
-      <Html position={[0, -0.5, 1.2]} center distanceFactor={5}>
-        <button className="button_posp">Posproducción</button>
-      </Html>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}>
       <group>
         <group>
           <mesh

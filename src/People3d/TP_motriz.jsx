@@ -10,7 +10,15 @@ const TP_motriz = (props) => {
   },[materials])
   
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}>
       <mesh
         castShadow
         receiveShadow

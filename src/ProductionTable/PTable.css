@@ -1,14 +1,31 @@
+html,body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0;
+  padding: 0; 
+}
+
 .square {
-  position: relative;
+  min-height: 0;
   top: 0px;
-  width: auto;
-  height: 60vh;
-  max-width: 750px;
+  width: 80%;
+  height: 100%;
+  max-width: 1900px;
   margin: 0 auto;
-  border-radius: 16px;
+  border-radius: 13px;
   overflow: hidden;
   background: #f4f4f4;
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -19,6 +36,10 @@
   align-items: center;
   padding: 24px 0 40px;
   margin-top: 0px;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
 }
 
 
@@ -30,8 +51,7 @@
 
 .main {
 
-  border-bottom: 1px solid #e3e3e3;
-  position: relative;
+  flex: 0 0 auto;
  
 }
 
@@ -39,8 +59,8 @@
 
 .LogoU {
   position: absolute;
-  top: -13px;
-  right: -10px;
+  top: 13px;
+  right: -20px;
   height:100px;
   width: auto;
   object-fit: contain;
@@ -48,8 +68,8 @@
 
 .LogoUAO {
   position: absolute;
-  top: -13px;
-  right: 140px;
+  top: 13px;
+  right: 130px;
   height:100px;
   width: auto;
   object-fit: contain;
@@ -88,90 +108,77 @@
   font-family: 'Inter', sans-serif;
 }
 
-/*botones*/
-
-.button_script,
-.button_cb,
-.button_posp,
-.button_Cinema,
-.tableButton {
- background-color: #f1eded;
-}
-
-
-.instruction,
-.instructionB {
+.instruction {
   
   font-size: 1rem;
   margin-top: 13px;
   color: #070707;
   font-family: 'Inter', sans-serif;
+  max-width: 1250px;
+  margin: 0 auto 12px;
+  padding: 0 24px;
+  text-align: center;
+  box-sizing: border-box;
+  overflow-wrap: normal;
+  hyphens: none;
+  word-break: normal;
   
 }
-
-/*botones debajo de la escena*/
-
-.panel_buttons{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.one,
-.two{
-  padding: 12px 20px;
-  border-radius: 14px;
+
+.tooltip {
+  background: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  user-select: none;
+}
+
+.tooltip-cursor{
+  padding: 5px 10px;
+  border-radius: 10px;
   border: 1px solid #d9d9d9;
   border-color: #110e0e;
   color: #161616;
   font-family: 'Inter', sans-serif;
-
-}
-.one--active,
-.two--active{
-  background: #b3121b;
-  border-color: #b3121b;
-  color: #ffffff;
+  background-color: #ffffff;
 }
 
-.panel_Pbuttons{
-  margin-top: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.ficha {
-  width: 90vw;
-  max-width: 750px;
-  margin: 12px auto 0;
-  padding: 18px 22px;
-  background: #fff;
-  border-left: 4px solid #b3121b;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
-}
-
-.ficha_titulo {
-
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1a1a1a;
-}
-
-.ficha_texto{
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: #333;
-}
-/*<div className="logo">
-                        <Canvas shadows = {true} camera={{position: [ 0, 1 , 0], fov: 60}}>
-                            <ambientLight intensity={1.2}/>
-                            <OrbitControls/>
-                            <directionalLight position={[-5, 4, -3]} intensity={5} shadows={true} />
-                            <UnivalleL position= {[2, 0, 0.5]}rotation={[Math.PI /-100, 0, 0.1]}/>
-                        </Canvas>
+/*
+                <p className="instructionB">Haz clic en una etapa o en cada personaje. También puedes usar los botones.</p>
+                <div className="panel_buttons">
+                    <button className={`one ${activo === "desarrollo" ? "one--active" : ""}`} onClick={() => handleText ("desarrollo")}>1. Desarrollo y preproducción</button>
+                    <button className={`one ${activo === "rodaje" ? "one--active" : ""}`} onClick={() => handleText ("rodaje")}>2. Rodaje</button>
+                    <button className={`one ${activo === "posproducción" ? "one--active" : ""}`} onClick={() => handleText ("posproducción")}>3. Posproducción</button>
+                    <button className={`one ${activo === "distribucion" ? "one--active" : ""}`} onClick={() => handleText ("distribucion")}>4. Distribución y exhibición</button>
+                </div>  
+                <div className="panel_Pbuttons">
+                    <button className={`two ${activo === "people" ? "one--active" : ""}`} onClick={() => handleText ("people")}>Personas participantes</button>
+                    <button className={`two ${activo === "visual" ? "one--active" : ""}`} onClick={() => handleText ("visual")}>Persona con discapacidad visual</button>
+                    <button className={`two ${activo === "auditiva" ? "one--active" : ""}`} onClick={() => handleText ("auditiva")}>Persona con discapacidad auditiva</button>
+                    <button className={`two ${activo === "motriz" ? "one--active" : ""}`} onClick={() => handleText ("motriz")}>Persona con discapacidad motriz</button>
+                    <button className={`two ${activo === "dispositivos" ? "one--active" : ""}`} onClick={() => handleText ("dispositivos")}>Comunicación mediante dispositivos</button>
+                </div>
+                {ficha && (
+                    <div className="ficha">
+                        <h3 className="ficha_titulo">{ficha.titulo}</h3>
+                        <p className="ficha_texto">{ficha.texto}</p>
                     </div>
-                    */
+
+                )}*/
