@@ -56,11 +56,20 @@ html,body, #root {
 }
 
 /*logos universidades*/
+.button_uao,
+.button_univalle{
 
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+}
 .LogoU {
   position: absolute;
   top: 13px;
-  right: -20px;
+  right: 140px;
   height:100px;
   width: auto;
   object-fit: contain;
@@ -69,7 +78,7 @@ html,body, #root {
 .LogoUAO {
   position: absolute;
   top: 13px;
-  right: 130px;
+  right: 90px;
   height:100px;
   width: auto;
   object-fit: contain;
