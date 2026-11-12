@@ -60,8 +60,14 @@ const info = {
     recurso: {
         titulo: "Recursos",
         texto:""
-       
-    
+    },
+    autoriaUV: {
+        titulo: "Ver autoría",
+        texto:"Universidad del valle"
+    },
+    autoriaUAO: {
+        titulo: "Ver autoría",
+        texto:"Universidad autonoma de occidente"
     }
 };
 
@@ -100,13 +106,29 @@ const PTable = () => {
     };
 
 
-    
-
     return(
         <main className="page">
             <header className="main">
-                <img src= "models-3d/logo/logounivalle.png" alt="Universidad del Valle" className="LogoU"/>
-                <img src= "models-3d/logo/Logo-uao.png" alt="Universidad autónoma de occidente" className="LogoUAO"/>
+                <div className="logos-header">
+                    <button className="button_univalle"
+                    aria-label="Ver autoria universidad del valle"
+                    onMouseEnter={() => anunciar ("autoriaUV")}
+                    onMouseLeave={() => anunciar (null)}
+                    >
+                        <img src= "models-3d/logo/logounivalle.png" alt="Universidad del Valle" className="LogoU"/>
+                        
+                    </button>
+
+                    <button className="button_uao"
+                    aria-label="Ver autoria universidad autonoma de occidente"
+                    onMouseEnter={() => anunciar("autoriaUAO")}
+                    onMouseLeave={() => anunciar(null)}
+                    >
+                        <img src= "models-3d/logo/Logo-uao.png" alt="Universidad autónoma de occidente" className="LogoUAO"/>
+                    </button>
+                </div>
+
+                
                 
                 <h1 className="mainTitle">
                     CONTRA<span className="Mtitle">PLANO</span></h1>
@@ -127,7 +149,7 @@ const PTable = () => {
                     <div role="status" aria-live="polite" aria-atomic="true" className="srOnly">
                         {anuncio}
                     </div>
-                    <Canvas shadows = {true} camera={{position: [ -1, 6.8 , 0], fov: 39}} >
+                    <Canvas shadows = {true} camera={{position: [ -6, 5 , 0], fov: 40}} >
                         <OrbitControls                    
                         enablePan={false}
                         minPolarAngle={Math.PI /6}
