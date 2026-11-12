@@ -4,9 +4,18 @@ import { useGLTF } from '@react-three/drei'
 const TCamera = (props) => {
   const { nodes, materials } = useGLTF('models-3d/camera.glb')
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null}
+    
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}>
       <group>
-        <group position={[-0.002, 0, 0]} rotation={[Math.PI / 2, 0, 1.374]} scale={0.01} />
+        <group position={[-0.002, 0, 0]} rotation={[Math.PI / 2, 0, 1.374]} scale={0.01}         />
         <mesh
           castShadow
           receiveShadow

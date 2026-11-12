@@ -9,7 +9,15 @@ const TP_auditiva = (props) => {
     materials['material_#b30819'].color.set('purple')
   }, [materials])
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}>
       <group>
         <group>
           <mesh

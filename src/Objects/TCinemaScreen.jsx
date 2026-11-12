@@ -4,10 +4,15 @@ import { Html, useGLTF } from '@react-three/drei'
 const TCinemaScreen = (props) => {
   const { nodes, materials } = useGLTF('models-3d/CinemaScreen.glb')
   return (
-    <group {...props} dispose={null}>
-      <Html position={[-0.1, -0.5, 1.5]} center distanceFactor={5}>
-        <button className='button_Cinema'>Distribución y exhibición</button>
-      </Html>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}>
       <group>
         <group>
           <mesh

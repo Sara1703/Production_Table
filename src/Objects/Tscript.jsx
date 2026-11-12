@@ -1,14 +1,20 @@
 import React, { useEffect, useRef } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
 
-const Tscript = (props) => {
+const Tscript = ({anunciar, clave, ...props}) => {
     const { nodes, materials } = useGLTF('models-3d/preproduccion.glb')
 
     return (
-    <group {...props} dispose={null}>
-      <Html position={[-0.3, -0.5, 1.2]} center distanceFactor={4.5}>
-        <button className="button_script">Desarrollo y preproducción</button>
-      </Html>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      anunciar?.(clave, [e.point.x, e.point.y + 0.4, e.point.z])
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      anunciar?.(null)
+    }}
+    >
       <group>
         <group>
           <mesh
@@ -170,7 +176,7 @@ const Tscript = (props) => {
             rotation={[Math.PI / 2, 0, 0]}
           />
         </group>
-      </group>
+      </group>    
     </group>
   )
 }
