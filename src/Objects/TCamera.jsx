@@ -1,11 +1,12 @@
-import React, { useRef } from 'react'
+import React, {  useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const TCamera = (props) => {
   const { nodes, materials } = useGLTF('models-3d/camera.glb')
+
   return (
     <group {...props} dispose={null}
-    
+
     onPointerOver={(e) =>{
       e.stopPropagation()
       props.anunciar?.(props.clave)
@@ -13,8 +14,9 @@ const TCamera = (props) => {
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
-    }}>
-      <group>
+    }}>    
+   
+      <group >
         <group position={[-0.002, 0, 0]} rotation={[Math.PI / 2, 0, 1.374]} scale={0.01}         />
         <mesh
           castShadow

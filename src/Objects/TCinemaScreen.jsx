@@ -1,19 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
 
 const TCinemaScreen = (props) => {
   const { nodes, materials } = useGLTF('models-3d/CinemaScreen.glb')
-  return (
-    <group {...props} dispose={null}
-    onPointerOver={(e) =>{
+      return (
+      <group {...props} dispose={null} 
+      onPointerOver={(e) =>{
       e.stopPropagation()
       props.anunciar?.(props.clave)
     }}
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
+    }}
+    
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
     }}>
-      <group>
+      
+        <group>
         <group>
           <mesh
             castShadow

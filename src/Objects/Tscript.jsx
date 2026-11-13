@@ -1,20 +1,26 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
 
-const Tscript = ({anunciar, clave, ...props}) => {
+
+const Tscript = (props) => {
     const { nodes, materials } = useGLTF('models-3d/preproduccion.glb')
 
     return (
     <group {...props} dispose={null}
     onPointerOver={(e) =>{
       e.stopPropagation()
-      anunciar?.(clave, [e.point.x, e.point.y + 0.4, e.point.z])
+      props.anunciar?.(props.clave)
     }}
     onPointerOut={(e) => {
       e.stopPropagation()
-      anunciar?.(null)
+      props.anunciar?.(null)
     }}
-    >
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
+    }}
+    >     
+    
       <group>
         <group>
           <mesh

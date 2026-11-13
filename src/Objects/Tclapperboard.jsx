@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
 
 const Tclapperboard = (props) => {
   const { nodes, materials } = useGLTF('models-3d/rodaje.glb')
   return (
+
     <group {...props} dispose={null}
     onPointerOver={(e) =>{
       e.stopPropagation()
@@ -12,7 +13,15 @@ const Tclapperboard = (props) => {
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
-    }}>
+    
+    }}
+    
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
+    }}
+    >
+    
       <group>
         <group>
           <group position={[0, 0.47, 0]} rotation={[-0.28, 0, 0]}>
