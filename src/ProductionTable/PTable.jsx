@@ -14,6 +14,8 @@ import "./PTable.css";
 import Lights from "../lights/Lights";
 import TCamera from "../Objects/TCamera";
 import { useEffect, useState } from "react";
+import InfoPanels from "../panels/InfoPanels";
+import { DataPanels } from "../panels/DataPanels";
 
 
 const info = {
@@ -80,8 +82,17 @@ const PTable = () => {
 
     const[mousePos, setMousePos] = useState({x:0, y:0});
 
+    const [hovered, setHovered] = useState(null);
+
+    const [panelActivo, setPanelActivo] = useState(null);
+
     const handleHover = (texto) => {
         setAnuncio(prev => (prev === texto ? prev : texto));
+    };
+
+    const openPanel = (clave) => {
+        setPanelActivo(clave);
+        setTooltip(null);
     };
 
     useEffect(() => {
@@ -94,7 +105,7 @@ const PTable = () => {
     return () => {
         window.removeEventListener('mousemove', handleGlobalMouseMove);
     };
-}, []);
+    }, []);
 
     const anunciar = (clave) => {
 
@@ -104,7 +115,6 @@ const PTable = () => {
             const dato = info[clave]
         if (dato) handleHover(`${dato.titulo}. ${dato.texto}`)
     };
-
 
     return(
         <main className="page">
@@ -149,7 +159,7 @@ const PTable = () => {
                     <div role="status" aria-live="polite" aria-atomic="true" className="srOnly">
                         {anuncio}
                     </div>
-                    <Canvas shadows = {true} camera={{position: [ -6, 5 , 0], fov: 40}} >
+                    <Canvas shadows = {true} camera={{position: [ -6, 5 , 0], fov: 40}} style={{cursor: hovered ? 'pointer' : 'auto'}}>
                         <OrbitControls                    
                         enablePan={false}
                         minPolarAngle={Math.PI /6}
@@ -164,21 +174,20 @@ const PTable = () => {
                         <directionalLight position={[-5, 4, -3]} intensity={5} shadows={true} />
                         <Environment files = "/environment/env.hdr" background/>
                     
-
-                        <Tscript scale={0.5} position={[1.2, -0.01, -1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "desarrollo"  />
-                        <Tclapperboard scale={0.5} position={[1.2, -0, 1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "rodaje" />
-                        <TPosp scale={0.5} position={[-1, -0, 1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "posproduccion" />
+            
+                        <Tscript scale={0.5} position={[1.2, -0.01, -1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "desarrollo" openPanel={openPanel} />
+                        <Tclapperboard scale={0.5} position={[1.2, -0, 1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "rodaje" openPanel={openPanel} />
+                        <TPosp scale={0.5} position={[-1, -0, 1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "posproduccion" openPanel={openPanel} />
                         <TableModel scale={0.5} position={[0, 0, 0]}/>
-                        <TCinemaScreen scale={0.42} position={[-1, 0, -1.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "distribucion" />
+                        <TCinemaScreen scale={0.42} position={[-1, 0, -1.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "distribucion" openPanel={openPanel} />
                         <PTable_redonde scale={0.5} position={[0, 0.04, 0]}/>
-                        <TCamera scale={0.4} position={[-5.2, -1.63, -0.85]} rotation={[Math.PI /-80, 3.1, 0]} anunciar={anunciar} clave= "recurso" />
+                        <TCamera scale={0.4} position={[-5.2, -1.63, -0.85]} rotation={[Math.PI /-80, 3.1, 0]} anunciar={anunciar} clave= "recurso" openPanel={openPanel}/>
                         <Lights/>
-
-                        //people
-                        <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "auditiva" />
-                        <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "dispositivos" />
-                        <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "motriz" />
-                        <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "visual"/>
+                       
+                        <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "auditiva" openPanel={openPanel}/>
+                        <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "dispositivos" openPanel={openPanel}/>
+                        <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "motriz" openPanel={openPanel}/>
+                        <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "visual" openPanel={openPanel}/>
                     
                     </Canvas >   
                     {tooltip && (
@@ -191,6 +200,10 @@ const PTable = () => {
                     )}
                 </div>                     
             </div> 
+            <InfoPanels 
+            datos={panelActivo ? DataPanels[panelActivo] : null}
+            onClose={() => setPanelActivo(null)}
+            />
         </main>
     );
 };

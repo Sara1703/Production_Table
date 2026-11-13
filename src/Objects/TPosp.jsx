@@ -1,10 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Html, useGLTF } from '@react-three/drei'
 
 const TPosp = (props) => {
 
-    const group = useRef()
     const { nodes, materials } = useGLTF('models-3d/posproduccion.glb')
+  
     return (
     <group {...props} dispose={null}
     onPointerOver={(e) =>{
@@ -14,7 +14,13 @@ const TPosp = (props) => {
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
-    }}>
+    }}
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
+    }}
+    >
+  
       <group>
         <group>
           <mesh
