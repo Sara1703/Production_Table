@@ -164,5 +164,30 @@ export const DataPanels = {
         texto: "Escuela de Cine y Comunicación Digital", 
         email: "ncampo@uao.edu.co"
       },]
-  }
+  },
+
+    recurso: {
+    titulo: "Recursos",
+    subtituloLista: "Documentos del proyecto",
+    itemsLista: [
+      { 
+        negrita: "Caracterización de la población participante", 
+        texto: "Documento completo del estudio de caracterización del proyecto.",
+        textoEnlace: "Descargar caracterización completa (PDF)",
+        url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf" 
+      }
+    ],
+    lineamientos: {
+      titulo: "Lineamientos de accesibilidad", 
+      texto: "Documento de lineamientos para la producción audiovisual inclusiva.",
+      url: "/pdf/Lineamientos.pdf", 
+      disponible: false 
+    },
+    entrevistas: [
+      { titulo: "Guion", descripcion: "Desarrollo y preproducción", disponible: false },
+      { titulo: "Dirección general", descripcion: "Desarrollo y preproducción · Rodaje", disponible: false },
+      { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", url: "#entrevista-arte" },
+      { titulo: "Dirección de fotografía", disponible: false }
+]
+  },
 };
