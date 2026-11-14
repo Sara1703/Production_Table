@@ -30,7 +30,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #bec3ce;
   
 }
 
@@ -61,7 +61,7 @@
   outline: 2px solid #fd2828;
 }
 
-/* Cuerpo con scroll interno */
+
 .modal-body {
   padding: 1.5rem 2rem 2rem;
   overflow-y: auto;
@@ -96,7 +96,7 @@
   color: #374151;
 }
 
-/* Recuadro gris de nota */
+
 .modal-nota {
   background-color: #f3f4f6;
   padding: 1rem 1.25rem;
@@ -110,7 +110,7 @@
   margin: 0;
 }
 
-/* Cuadrícula de entrevistas (2 columnas) */
+
 .entrevistas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

@@ -17,7 +17,12 @@ const TP_visual = (props) => {
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
-    }}>
+    }}
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
+    }}
+    >
       <group>
         <group>
           <mesh

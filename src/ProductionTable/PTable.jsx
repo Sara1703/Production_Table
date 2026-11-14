@@ -82,9 +82,11 @@ const PTable = () => {
 
     const[mousePos, setMousePos] = useState({x:0, y:0});
 
-    const [hovered, setHovered] = useState(null);
+    const [hovered] = useState(null);
 
     const [panelActivo, setPanelActivo] = useState(null);
+
+    const [modalAbierto, setModalAbierto] = useState(null);
 
     const handleHover = (texto) => {
         setAnuncio(prev => (prev === texto ? prev : texto));
@@ -124,6 +126,7 @@ const PTable = () => {
                     aria-label="Ver autoria universidad del valle"
                     onMouseEnter={() => anunciar ("autoriaUV")}
                     onMouseLeave={() => anunciar (null)}
+                    onClick={() => setModalAbierto("univalle")}                   
                     >
                         <img src= "models-3d/logo/logounivalle.png" alt="Universidad del Valle" className="LogoU"/>
                         
@@ -133,6 +136,7 @@ const PTable = () => {
                     aria-label="Ver autoria universidad autonoma de occidente"
                     onMouseEnter={() => anunciar("autoriaUAO")}
                     onMouseLeave={() => anunciar(null)}
+                    onClick={() => setModalAbierto("uao")} 
                     >
                         <img src= "models-3d/logo/Logo-uao.png" alt="Universidad autónoma de occidente" className="LogoUAO"/>
                     </button>
@@ -204,6 +208,13 @@ const PTable = () => {
             datos={panelActivo ? DataPanels[panelActivo] : null}
             onClose={() => setPanelActivo(null)}
             />
+            {modalAbierto && (
+                <InfoPanels
+                datos={DataPanels[modalAbierto]}
+                onClose={() => setModalAbierto(null)}
+                
+                />
+            )}
         </main>
     );
 };
