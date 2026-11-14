@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./InfoPanels.css"
 
-
 const InfoPanels = ({datos, onClose}) => {
     const closeBtnRef = useRef(null);
 
@@ -49,37 +48,71 @@ const InfoPanels = ({datos, onClose}) => {
           {datos.itemsLista && datos.itemsLista.length > 0 && (
             <section className="modal-seccion">
               <h3>{datos.subtituloLista}</h3>
-              <ul className="lista-roles">
-                {datos.itemsLista.map((item, index) => (
-                  <li key={index} style={{ marginBottom: '1rem', listStyleType: item.url ? 'none' : 'disc'}}>
-                    
-                    {/* Si el item tiene una URL, lo mostramos como enlace de descarga */}
-                    {item.url ? (
-                      <a 
-                        href={item.url} 
-                        download 
-                        className="enlace-descarga" // Este estilo ya lo tienes en tu CSS (color rojo)
-                      >
-                        {item.textoEnlace ? item.textoEnlace : `Descargar ${item.texto} (PDF)`}
-                      </a>
-                    ) : (
-                      
-                      <span>
-                        {item.negrita && <strong>{item.negrita} </strong>}
-                        {item.texto}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
               
-            </section>
-          )}
+              {/* Quitamos la viñeta por defecto del <ul> para controlarla manualmente */}
+              <ul className="lista-roles" style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                {datos.itemsLista.map((item, index) => {
+                  
+                  // 1. NOTA (La sacamos de la lista para que no tenga viñeta)
+                  if (item.nota) {
+                    return (
+                      <div key={index} className="modal-nota" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+                        <p>{item.nota}</p>
+                      </div>
+                    );
+                  }
 
-          {datos.nota && (
-            <div className="modal-nota">
-              <p>{datos.nota}</p>
-            </div>
+                  // 2. AUTORES (Correos de la universidad)
+                  if (item.email) {
+                    return (
+                      <li key={index} style={{ marginBottom: '1.5rem', listStyleType: 'disc' }}>
+                        <strong>{item.negrita}</strong>
+                        <div style={{ marginTop: '0.2rem', color: '#374151' }}>{item.texto}</div>
+                        <a href={`mailto:${item.email}`} style={{ color: '#b30819', textDecoration: 'underline' }}>
+                          {item.email}
+                        </a>
+                      </li>
+                    );
+                  }
+
+                  // 3. TÍTULO DEL DOCUMENTO (Ej: "Documento relacionado")
+                  if (item.negrita && !item.url && !item.texto) {
+                    return (
+                      <li key={index} style={{ marginTop: '1.5rem', listStyleType: 'none' }}>
+                        <strong style={{ fontSize: '1rem', color: '#111827' }}>{item.negrita}</strong>
+                      </li>
+                    );
+                  }
+
+                  // 4. ENLACE DEL DOCUMENTO (El PDF)
+                  if (item.url) {
+                    return (
+                      <li key={index} style={{ marginTop: '0.3rem', listStyleType: 'none' }}>
+                        <a href={item.url} download className="enlace-descarga" style={{ color: '#b30819', textDecoration: 'underline' }}>
+                          {item.textoEnlace ? item.textoEnlace : `Descargar ${item.texto} (PDF)`}
+                        </a>
+                      </li>
+                    );
+                  }
+
+                  // 5. ROLES NORMALES (Los que sí llevan viñeta)
+                  return (
+                    <li key={index} style={{ marginBottom: '1rem', listStyleType: 'disc' }}>
+                      {item.negrita && <strong>{item.negrita} </strong>}
+                      {item.texto}
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* 6. NOTA GENERAL (Para ventanas como Desarrollo que la tienen afuera) */}
+              {datos.nota && (
+                <div className="modal-nota" style={{ marginTop: '1.5rem' }}>
+                  <p>{datos.nota}</p>
+                </div>
+              )}
+
+            </section>
           )}
 
           {datos.entrevistas && datos.entrevistas.length > 0 && (
@@ -124,10 +157,3 @@ const InfoPanels = ({datos, onClose}) => {
 };
 
 export default InfoPanels;
-
-
-
-
-    
-
-        

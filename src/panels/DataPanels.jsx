@@ -88,15 +88,81 @@ export const DataPanels = {
   
   auditiva: {
     titulo: "Personas con discapacidad auditiva",
-    consiste: "La distribución organiza cómo llega la obra a salas, festivales, plataformas y otros circuitos. La exhibición la presenta al público en funciones o servicios digitales y pone a disposición las versiones y los recursos de acceso preparados.",
-    subtituloLista: "Roles habituales",
     itemsLista: [
       { negrita: "Formas de acceso y participación:", texto: "Las preferencias de comunicación varían: algunas personas usan el habla o el texto y otras se comunican en Lengua de Señas Colombiana (LSC). El ruido y las conversaciones con varias voces pueden dificultar la comprensión del habla." },
       { negrita: "Barreras:", texto: "En una producción, las indicaciones que solo se dan de viva voz y la edición que depende únicamente de la escucha pueden limitar la participación. Como público, los subtítulos incompletos pueden dificultar reconocer quién habla o entender el papel de la música y los efectos." },
       { negrita: "Apoyos propuestos:", texto: "Acordar con cada persona el uso de texto, señales visuales o interpretación en LSC. Facilitar la revisión del audio con transcripciones e indicadores visuales. En la obra final, ofrecer subtítulos sincronizados que identifiquen a quien habla e incluyan los sonidos relevantes." },
       { negrita: "Documento relacionado"},
-      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Dis_auditiva.pdf"},
-    ],
-    
+      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf"},
+    ],    
   },
+
+  visual: {
+    titulo: "Personas con ceguera total",
+
+    itemsLista: [
+      { negrita: "Formas de acceso y participación:", texto: "En los talleres, las personas con ceguera total accedieron a la información principalmente por el sonido, con apoyo del tacto y de referencias espaciales. Los lectores de pantalla facilitan el uso de documentos y herramientas digitales cuando estos son accesibles." },
+      { negrita: "Barreras:", texto: "Al editar un video, los controles sin etiquetas y las líneas de tiempo que dependen de imágenes dificultan localizar escenas y revisar el montaje. Como público, la información que solo aparece en pantalla puede quedar fuera de su alcance." },
+      { negrita: "Apoyos propuestos:", texto: "Usar guiones y herramientas compatibles con lectores de pantalla, describir los elementos visuales durante la producción y planear la audiodescripción desde el guion. Al colaborar, acordar cómo brindar apoyo para que la persona conserve el control sobre sus decisiones creativas." },
+      { negrita: "Documento relacionado"},
+      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf"},
+    ],    
+  },
+
+  motriz: {
+    titulo: "Personas con movilidad reducida",
+
+    itemsLista: [
+      { negrita: "Formas de acceso y participación:", texto: "Las necesidades pueden variar al desplazarse, alcanzar equipos, manejar controles o permanecer en una postura. Algunas personas requieren rutas despejadas; otras necesitan pausas o ajustes en la altura y el manejo de los equipos." },
+      { negrita: "Barreras:", texto: "En rodaje, los cables, los pasos estrechos y las jornadas sin pausas pueden dificultar el trabajo. En exhibición, una persona puede entrar a la sala y aun así encontrar que las ubicaciones disponibles ofrecen mala visibilidad o la separan de sus acompañantes." },
+      { negrita: "Apoyos propuestos:", texto: "Revisar los recorridos antes del rodaje y cuando cambie la distribución del set. Acordar pausas y adaptar los equipos a las tareas de cada persona. En exhibición, ofrecer ubicaciones con buena visibilidad y espacio para compartir la función con acompañantes." },
+      { negrita: "Documento relacionado"},
+      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf"},
+    ],    
+  },
+
+  dispositivos: {
+    titulo: "Personas que se comunican mediante dispositivos",
+    
+    itemsLista: [
+      { negrita: "Formas de acceso y participación:", texto: "Una tableta u otro dispositivo de comunicación aumentativa y alternativa (CAA) puede complementar o sustituir el habla. Usar un dispositivo para expresarse no indica dificultad para comprender una película o tomar decisiones." },
+      { negrita: "Barreras:", texto: "Si el equipo cambia de tema antes de que la persona termine de preparar su mensaje, su propuesta puede quedar sin escuchar. Lo mismo puede ocurrir al hacer una pregunta o comentar la obra en un cineforo." },
+      { negrita: "Apoyos propuestos:", texto: "Dirigirse directamente a la persona, acordar cómo puede pedir el turno y darle tiempo para completar su mensaje. Compartir con anticipación los temas y las preguntas, y facilitar el uso de su dispositivo durante las actividades." },
+      {nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones."},
+      { negrita: "Documento relacionado"},
+      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf"},
+    ],           
+  },
+
+  univalle: {
+    titulo: "Universidad del Valle",
+    subtituloLista: "Autores",
+    itemsLista: [
+      { 
+        negrita: "Profesora: Paola J. Rodríguez C. Ph.D.", 
+        texto: "Escuela de Ingeniería de Sistemas y Computación", 
+        email: "paola.rodriguez@correounivalle.edu.co"
+      },
+      { 
+        negrita: "Profesor: Javier M. Reyes V. Ph.D.", 
+        texto: "Departamento de Diseño", 
+        email: "javier.reyes@correounivalle.edu.co"
+      },
+      { 
+        negrita: "Profesor: John A. Sanabria O. Ph.D.", 
+        texto: "Escuela de Ingeniería de Sistemas y Computación", 
+        email: "john.sanabria@correounivalle.edu.co"
+      },
+    ],
+  },
+  uao: {
+    titulo: "Universidad Autónoma de Occidente",
+    subtituloLista: "Autora",
+    itemsLista: [
+      { 
+        negrita: "Profesora: Natalia Campo Castro Ph.D.", 
+        texto: "Escuela de Cine y Comunicación Digital", 
+        email: "ncampo@uao.edu.co"
+      },]
+  }
 };
