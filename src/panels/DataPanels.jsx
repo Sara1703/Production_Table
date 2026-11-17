@@ -16,7 +16,7 @@ export const DataPanels = {
     entrevistas: [
       { titulo: "Guion", disponible: false },
       { titulo: "Dirección general", disponible: false },
-      { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", url: "#entrevista-arte" },
+      { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", videoId: "YFU7bhMC2OA" },
       { titulo: "Dirección de fotografía", disponible: false }
     ],
     lineamientos: {
@@ -40,7 +40,7 @@ export const DataPanels = {
     nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones.",
     entrevistas: [
       { titulo: "Dirección general", disponible: false },
-      { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", url: "#entrevista-arte" },
+      { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", videoId: "YFU7bhMC2OA" },
       { titulo: "Dirección de fotografía", disponible: false }
     ],
     lineamientos: {
