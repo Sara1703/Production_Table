@@ -85,6 +85,16 @@ export const DataPanels = {
       disponible: false
     }
   },
+
+  people: {
+    titulo: "Personas participantes",
+    consiste: "Los cuatro personajes representan perfiles ilustrativos. Selecciona un personaje o su botón para conocer las formas de participación, las barreras y los apoyos propuestos.",
+     itemsLista: [
+      {nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones."},
+      { negrita: "Documento relacionado"},
+      { textoEnlace:"Descargar caracterización completa (PDF).", url: "/pdf/Caracterizacion_poblacion_CONTRAPLANO.pdf"},
+    ], 
+  },
   
   auditiva: {
     titulo: "Personas con discapacidad auditiva",
