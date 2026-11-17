@@ -6,7 +6,19 @@ const PTable_redonde = (props) =>{
 
   
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null}
+    onPointerOver={(e) =>{
+      e.stopPropagation()
+      props.anunciar?.(props.clave)
+    }}
+    onPointerOut={(e) => {
+      e.stopPropagation()
+      props.anunciar?.(null)
+    }}
+    onClick={(e) => {
+      e.stopPropagation()
+      props.openPanel?.(props.clave)
+    }}>
       <mesh
         castShadow
         receiveShadow
