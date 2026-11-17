@@ -96,6 +96,24 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                                             );
                                         }
 
+                                        // 👇 CONDICIÓN PARA LOS AUTORES (UNIVALLE Y UAO) 👇
+                                        if (item.email) {
+                                            return (
+                                                <li key={index} style={{ 
+                                                    marginBottom: '1.5rem', 
+                                                    listStyleType: 'disc',
+                                                    borderBottom: index !== datos.itemsLista.length - 1 ? '1px solid #e5e7eb' : 'none',
+                                                    paddingBottom: '1rem'
+                                                }}>
+                                                    <strong style={{ color: '#111827', fontSize: '1rem' }}>{item.negrita}</strong>
+                                                    <div style={{ marginTop: '0.3rem', color: '#374151', fontSize: '0.95rem' }}>{item.texto}</div>
+                                                    <a href={`mailto:${item.email}`} style={{ color: '#b30819', textDecoration: 'underline', fontSize: '0.95rem', display: 'inline-block', marginTop: '0.2rem' }}>
+                                                        {item.email}
+                                                    </a>
+                                                </li>
+                                            );
+                                        }
+
                                         if (item.negrita && !item.url && !item.texto) {
                                             return (
                                                 <li key={index} style={{ marginTop: '1.5rem', listStyleType: 'none' }}>
@@ -159,7 +177,7 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                         </section>
                     )}
 
-                    {/* cualquier vetana diferente a recursos */}
+                    {/* cualquier ventana diferente a recursos */}
                     {datos.lineamientos && datos.titulo !== "Recursos" && (
                         <section className="modal-seccion">
                             <h3>Lineamientos</h3>
