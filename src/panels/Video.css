@@ -1,0 +1,26 @@
+/* Contenedor del enlace de respaldo */
+.video-respaldo {
+  padding: 1rem;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+/* Estilo del enlace a YouTube */
+.enlace-youtube {
+  color: #b30819;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.enlace-youtube:hover {
+  color: #fd2828; /* Un rojo un poco más claro al pasar el ratón */
+}
+
+.texto-requiere-internet{
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+}
+
