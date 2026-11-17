@@ -16,6 +16,7 @@ import TCamera from "../Objects/TCamera";
 import { useEffect, useState } from "react";
 import InfoPanels from "../panels/InfoPanels";
 import { DataPanels } from "../panels/DataPanels";
+import VideoModal from "../panels/Video";
 
 
 const info = {
@@ -87,6 +88,12 @@ const PTable = () => {
     const [panelActivo, setPanelActivo] = useState(null);
 
     const [modalAbierto, setModalAbierto] = useState(null);
+    
+    const[videoAbierto, setVideoAbierto] =useState(null);
+
+    const abrirVideo = (id, titulo) => {
+        setVideoAbierto({id, titulo});
+    }
 
     const handleHover = (texto) => {
         setAnuncio(prev => (prev === texto ? prev : texto));
@@ -141,8 +148,7 @@ const PTable = () => {
                         <img src= "models-3d/logo/Logo-uao.png" alt="Universidad autónoma de occidente" className="LogoUAO"/>
                     </button>
                 </div>
-
-                
+               
                 
                 <h1 className="mainTitle">
                     CONTRA<span className="Mtitle">PLANO</span></h1>
@@ -207,12 +213,21 @@ const PTable = () => {
             <InfoPanels 
             datos={panelActivo ? DataPanels[panelActivo] : null}
             onClose={() => setPanelActivo(null)}
+            onAbrirVideo={abrirVideo}
             />
             {modalAbierto && (
                 <InfoPanels
                 datos={DataPanels[modalAbierto]}
                 onClose={() => setModalAbierto(null)}
-                
+                onAbrirVideo={abrirVideo}
+                />
+            )}
+            {videoAbierto && (
+                <VideoModal
+                videoId={videoAbierto.id}
+                titulo={videoAbierto.titulo}
+                onClose={() => setVideoAbierto(null)}
+   
                 />
             )}
         </main>

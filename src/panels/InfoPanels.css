@@ -159,3 +159,12 @@
 .enlace-descarga{
     color: #e41607;
 }
+
+.texto-descripcion-entrevista{
+  margin: 0.2rem 0 0.5rem 0;
+  color: #0f0f0f; 
+  font-size: 0.9rem;
+  user-select: text; 
+  cursor: text; 
+}
+

@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import "./InfoPanels.css"
 
-const InfoPanels = ({datos, onClose}) => {
+const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
     const closeBtnRef = useRef(null);
 
     useEffect(() => {
         if(!datos) return;
         
         if(closeBtnRef.current) {
-            closeBtnRef.current.focus();
+            closeBtnRef.current.focus({ preventScroll: true});
         }
 
         const handleKeyDown = (e) => {
@@ -45,16 +45,13 @@ const InfoPanels = ({datos, onClose}) => {
                         </section>
                     )}
 
-                  
                     {datos.itemsLista && datos.itemsLista.length > 0 && (
                         <section className="modal-seccion">
                             <h3>{datos.subtituloLista}</h3>
                             
-                            
                             {datos.titulo === "Recursos" ? (
                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
                                     
-                                    {/* Tarjeta de la Caracterización (Viene de itemsLista) */}
                                     {datos.itemsLista.map((item, index) => (
                                         <div key={index} style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem' }}>
                                             <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.05rem', color: '#111827' }}>
@@ -69,7 +66,6 @@ const InfoPanels = ({datos, onClose}) => {
                                         </div>
                                     ))}
 
-                               
                                     {datos.lineamientos && (
                                         <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem' }}>
                                             <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.05rem', color: '#111827' }}>
@@ -89,28 +85,53 @@ const InfoPanels = ({datos, onClose}) => {
                                     )}
                                 </div>
                             ) : (
-                                
-                                <ul className="lista-roles">
-                                    {datos.itemsLista.map((item, index) => (
-                                        <li key={index} style={{ marginBottom: '1rem', listStyleType: item.url ? 'none' : 'disc'}}>
-                                            {item.url ? (
-                                                <a href={item.url} download className="enlace-descarga">
-                                                    {item.textoEnlace ? item.textoEnlace : `Descargar ${item.texto} (PDF)`}
-                                                </a>
-                                            ) : (
-                                                <span>
-                                                    {item.negrita && <strong>{item.negrita} </strong>}
-                                                    {item.texto}
-                                                </span>
-                                            )}
-                                        </li>
-                                    ))}
+                                <ul className="lista-roles" style={{ listStyleType: 'none', paddingLeft: 0 }}>
+                                    {datos.itemsLista.map((item, index) => {
+                                        
+                                        if (item.nota) {
+                                            return (
+                                                <div key={index} className="modal-nota" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+                                                    <p>{item.nota}</p>
+                                                </div>
+                                            );
+                                        }
+
+                                        if (item.negrita && !item.url && !item.texto) {
+                                            return (
+                                                <li key={index} style={{ marginTop: '1.5rem', listStyleType: 'none' }}>
+                                                    <strong style={{ fontSize: '1rem', color: '#111827' }}>{item.negrita}</strong>
+                                                </li>
+                                            );
+                                        }
+
+                                        if (item.url) {
+                                            return (
+                                                <li key={index} style={{ marginTop: '0.3rem', listStyleType: 'none' }}>
+                                                    <a href={item.url} download className="enlace-descarga" style={{ color: '#b30819', textDecoration: 'underline' }}>
+                                                        {item.textoEnlace ? item.textoEnlace : `Descargar ${item.texto} (PDF)`}
+                                                    </a>
+                                                </li>
+                                            );
+                                        }
+
+                                        return (
+                                            <li key={index} style={{ marginBottom: '1rem', listStyleType: 'disc' }}>
+                                                {item.negrita && <strong>{item.negrita} </strong>}
+                                                {item.texto}
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             )}
                         </section>
                     )}
 
-                    
+                    {datos.nota && !datos.itemsLista?.some(item => item.nota) && (
+                        <div className="modal-nota" style={{ marginTop: '1rem' }}>
+                            <p>{datos.nota}</p>
+                        </div>
+                    )}
+
                     {datos.entrevistas && datos.entrevistas.length > 0 && (
                         <section className="modal-seccion">
                             <h3>Entrevistas relacionadas</h3>
@@ -118,10 +139,17 @@ const InfoPanels = ({datos, onClose}) => {
                                 {datos.entrevistas.map((ent, index) => (
                                     <div key={index} className="entrevista-card">
                                         <h4>{ent.titulo}</h4>
+                                                                
+                                        {ent.descripcion && (
+                                            <p className="texto-descripcion-entrevista">
+                                                {ent.descripcion}
+                                            </p>
+                                        )}
+                                        
                                         {ent.disponible ? (
-                                            <a href={ent.url} className="btn-entrevista" target="_blank" rel="noreferrer">
+                                            <button className="btn-entrevista" onClick={() => onAbrirVideo(ent.videoId, `Entrevista: ${ent.titulo}`)}>
                                                 {ent.textoBoton}
-                                            </a>
+                                            </button>
                                         ) : (
                                             <span className="texto-pendiente">Enlace pendiente</span>
                                         )}
@@ -131,7 +159,7 @@ const InfoPanels = ({datos, onClose}) => {
                         </section>
                     )}
 
-                    {/* SECCIÓN DE LINEAMIENTOS (Para ventanas distintas a Recursos) */}
+                    {/* cualquier vetana diferente a recursos */}
                     {datos.lineamientos && datos.titulo !== "Recursos" && (
                         <section className="modal-seccion">
                             <h3>Lineamientos</h3>
@@ -146,13 +174,6 @@ const InfoPanels = ({datos, onClose}) => {
                                 )}
                             </p>
                         </section>
-                    )}
-
-                    
-                    {datos.nota && (
-                        <div className="modal-nota">
-                            <p>{datos.nota}</p>
-                        </div>
                     )}
                 </div>
             </div>
