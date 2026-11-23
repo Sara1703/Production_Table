@@ -1,25 +1,40 @@
 import React, { useState } from 'react'
-import { Html, useGLTF } from '@react-three/drei'
+import { Html, useGLTF, useCursor } from '@react-three/drei'
+import { useSpring, animated } from '@react-spring/three'
 
 const TCinemaScreen = (props) => {
   const { nodes, materials } = useGLTF('models-3d/CinemaScreen.glb')
-      return (
-      <group {...props} dispose={null} 
-      onPointerOver={(e) =>{
-      e.stopPropagation()
-      props.anunciar?.(props.clave)
-    }}
-    onPointerOut={(e) => {
-      e.stopPropagation()
-      props.anunciar?.(null)
-    }}
-    
-    onClick={(e) => {
-      e.stopPropagation()
-      props.openPanel?.(props.clave)
-    }}>
+  const [hovered, setHovered] =useState(false);
+  
+    useCursor(hovered);
+  
+    const {escala} = useSpring ({
+      escala: props.seleccionado ? 3 : hovered ? 1.15 : 1,
+      config: {tension: 300, friction:18}
+    })
+    return (
+  
+      <group {...props} dispose={null}
       
-        <group>
+      onPointerOver={(e) =>{
+        e.stopPropagation()
+        props.anunciar?.(props.clave)
+        setHovered(true)
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation()
+        props.anunciar?.(null)
+        setHovered(false)
+      
+      }}
+      
+      onClick={(e) => {
+        e.stopPropagation()
+        props.openPanel?.(props.clave)
+      }}
+      >
+      
+        <animated.group scale={escala}>
         <group>
           <mesh
             castShadow
@@ -901,7 +916,7 @@ const TCinemaScreen = (props) => {
             position={[0.84, 0.13, 0.74]}
           />
         </group>
-      </group>
+      </animated.group>
     </group>
   )
 }

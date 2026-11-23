@@ -1,27 +1,42 @@
-import React, { useState } from 'react'
-import { Html, useGLTF } from '@react-three/drei'
-
+import React, { useRef, useState } from 'react'
+import { Html, useCursor, useGLTF } from '@react-three/drei'
+import { useSpring, animated } from '@react-spring/three'
 
 const Tscript = (props) => {
-    const { nodes, materials } = useGLTF('models-3d/preproduccion.glb')
+  
+  const { nodes, materials } = useGLTF('models-3d/preproduccion.glb')
 
-    return (
+  const [hovered, setHovered] =useState(false);
+
+  useCursor(hovered);
+
+  const {escala} = useSpring ({
+    escala: props.seleccionado ? 3 : hovered ? 1.16 : 1,
+    config: {tension: 300, friction:18}
+  })
+  return (
+
     <group {...props} dispose={null}
+    
     onPointerOver={(e) =>{
       e.stopPropagation()
       props.anunciar?.(props.clave)
+      setHovered(true)
     }}
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
+      setHovered(false)
+    
     }}
+    
     onClick={(e) => {
       e.stopPropagation()
       props.openPanel?.(props.clave)
     }}
-    >     
+    >
     
-      <group>
+      <animated.group scale={escala}>
         <group>
           <mesh
             castShadow
@@ -182,7 +197,7 @@ const Tscript = (props) => {
             rotation={[Math.PI / 2, 0, 0]}
           />
         </group>
-      </group>    
+      </animated.group>    
     </group>
   )
 }

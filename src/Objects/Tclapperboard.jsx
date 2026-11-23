@@ -1,18 +1,30 @@
 import React, { useState } from 'react'
-import { Html, useGLTF } from '@react-three/drei'
+import { Html, useCursor, useGLTF } from '@react-three/drei'
+import { useSpring, animated } from '@react-spring/three';
 
 const Tclapperboard = (props) => {
-  const { nodes, materials } = useGLTF('models-3d/rodaje.glb')
+  const { nodes, materials } = useGLTF('models-3d/rodaje.glb');
+  const [hovered, setHovered] =useState(false);
+
+  useCursor(hovered);
+
+  const {escala} = useSpring ({
+    escala: props.seleccionado ? 1.18 : hovered ? 1.15 : 1,
+    config: {tension: 300, friction:18}
+  })
   return (
 
     <group {...props} dispose={null}
+    
     onPointerOver={(e) =>{
       e.stopPropagation()
       props.anunciar?.(props.clave)
+      setHovered(true)
     }}
     onPointerOut={(e) => {
       e.stopPropagation()
       props.anunciar?.(null)
+      setHovered(false)
     
     }}
     
@@ -22,7 +34,7 @@ const Tclapperboard = (props) => {
     }}
     >
     
-      <group>
+      <animated.group scale={escala}>
         <group>
           <group position={[0, 0.47, 0]} rotation={[-0.28, 0, 0]}>
             <mesh
@@ -231,7 +243,7 @@ const Tclapperboard = (props) => {
             position={[0, 0.025, 0]}
           />
         </group>
-      </group>
+      </animated.group>
     </group>
   )
 }
