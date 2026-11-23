@@ -1,27 +1,41 @@
-import React, { useRef, useState } from 'react'
-import { Html, useGLTF } from '@react-three/drei'
+import React, { useState } from 'react'
+import { Html, useGLTF, useCursor } from '@react-three/drei'
+import { useSpring, animated } from '@react-spring/three'
 
 const TPosp = (props) => {
-
+  
     const { nodes, materials } = useGLTF('models-3d/posproduccion.glb')
+    const [hovered, setHovered] =useState(false);
+      
+        useCursor(hovered);
+      
+        const {escala} = useSpring ({
+          escala: props.seleccionado ? 3 : hovered ? 1.15 : 1,
+          config: {tension: 300, friction:18}
+        })
+        return (
+      
+          <group {...props} dispose={null}
+          
+          onPointerOver={(e) =>{
+            e.stopPropagation()
+            props.anunciar?.(props.clave)
+            setHovered(true)
+          }}
+          onPointerOut={(e) => {
+            e.stopPropagation()
+            props.anunciar?.(null)
+            setHovered(false)
+          
+          }}
+          
+          onClick={(e) => {
+            e.stopPropagation()
+            props.openPanel?.(props.clave)
+          }}
+          >
   
-    return (
-    <group {...props} dispose={null}
-    onPointerOver={(e) =>{
-      e.stopPropagation()
-      props.anunciar?.(props.clave)
-    }}
-    onPointerOut={(e) => {
-      e.stopPropagation()
-      props.anunciar?.(null)
-    }}
-    onClick={(e) => {
-      e.stopPropagation()
-      props.openPanel?.(props.clave)
-    }}
-    >
-  
-      <group>
+      <animated.group scale={escala}>
         <group>
           <mesh
             castShadow
@@ -1600,7 +1614,7 @@ const TPosp = (props) => {
             scale={[0.65, 0.5, 1]}
           />
         </group>
-      </group>
+      </animated.group>
     </group>
   )
 }

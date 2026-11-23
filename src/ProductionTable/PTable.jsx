@@ -94,6 +94,9 @@ const PTable = () => {
     
     const lastFocusedElement = useRef(null);
 
+    const [mesaActiva, setMesaActiva] = useState(false);
+    const grupoActivo = mesaActiva;
+
 
     const abrirVideo = (id, titulo) => {
         setVideoAbierto({id, titulo});
@@ -233,6 +236,7 @@ const PTable = () => {
                         description={`${info.rodaje.titulo}. ${info.rodaje.texto}`}
                         actionCall={() => openPanel("rodaje")}
                         focusCall={() => anunciar("rodaje")}>
+                            
                             <Tclapperboard scale={0.5} position={[1.2, -0, 1.5]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "rodaje" openPanel={openPanel} />                   
                        
                         </A11y>
@@ -250,15 +254,23 @@ const PTable = () => {
                         <A11y
                         role="button" 
                         description={`${info.people.titulo}. ${info.people.texto}`}
-                        actionCall={() => openPanel("people")}
-                        focusCall={() => anunciar("people")}>
+                        actionCall={() => openPanel("distribucion")}
+                        focusCall={() => anunciar("distribucion")}>
 
                             <TCinemaScreen scale={0.42} position={[-1, 0, -1.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "distribucion" openPanel={openPanel} />
                         
                         </A11y>
 
-                        <PTable_redonde scale={0.5} position={[0, 0.04, 0]} anunciar={anunciar} clave= "people" openPanel={openPanel}/>
+                        <A11y
+                        role="button" 
+                        description={`${info.people.titulo}. ${info.people.texto}`}
+                        actionCall={() => openPanel("people")}
+                        focusCall={() => anunciar("people")}
+                        >
+                            <PTable_redonde scale={0.5} position={[0, 0.04, 0]} anunciar={anunciar} clave= "people" openPanel={openPanel} onResaltar={setMesaActiva}/>
                        
+                        </A11y>
+                        
                        <A11y
                         role="button" 
                         description={`${info.recurso.titulo}. ${info.recurso.texto}`}
@@ -275,7 +287,7 @@ const PTable = () => {
                         actionCall={() => openPanel("auditiva")}
                         focusCall={() => anunciar("auditiva")} >
 
-                            <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "auditiva" openPanel={openPanel}/>
+                            <TP_auditiva scale={0.5} position={[0.7, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "auditiva" openPanel={openPanel} seleccionado={grupoActivo}/>
                         
                         </A11y>
 
@@ -285,7 +297,7 @@ const PTable = () => {
                         actionCall={() => openPanel("dispositivos")}
                         focusCall={() => anunciar("dispositivos")} >
 
-                            <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "dispositivos" openPanel={openPanel}/>
+                            <TP_caa scale={0.5} position={[0.7, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "dispositivos" openPanel={openPanel} seleccionado={grupoActivo}/>
                         
                         </A11y>
                             
@@ -295,7 +307,7 @@ const PTable = () => {
                         actionCall={() => openPanel("motriz")}
                         focusCall={() => anunciar("motriz")} >
 
-                            <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "motriz" openPanel={openPanel}/>
+                            <TP_motriz scale={0.5} position={[-0.5, -0, 0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "motriz" openPanel={openPanel} seleccionado={grupoActivo}/>
 
                         </A11y>
                             
@@ -305,7 +317,7 @@ const PTable = () => {
                         actionCall={() => openPanel("visual")}
                         focusCall={() => anunciar("visual")} >
                             
-                            <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "visual" openPanel={openPanel}/>
+                            <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "visual" openPanel={openPanel} seleccionado={grupoActivo}/>
                         
                         </A11y>    
                         
