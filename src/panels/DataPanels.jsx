@@ -200,10 +200,10 @@ export const DataPanels = {
       url:"/pdf/Lineamientos_CONTRAPLANO.pdf" 
     },
     entrevistas: [
-      { titulo: "Guion", descripcion: "Desarrollo y preproducción", disponible: false },
-      { titulo: "Dirección general", descripcion: "Desarrollo y preproducción · Rodaje", disponible: false },
+      { titulo: "Guion", descripcion: "Desarrollo y preproducción", disponible: true, textoBoton: "Ver entrevista: Guion", videoId: "HpivXQTEt80" },
+      { titulo: "Dirección general", descripcion: "Desarrollo y preproducción · Rodaje", disponible: true, textoBoton: "Ver entrevista: Dirección General", videoId: "YHSkxUhG0vk" },
       { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", videoId: "YFU7bhMC2OA" },
-      { titulo: "Dirección de fotografía", disponible: false }
+      { titulo: "Dirección de fotografía", disponible: true, textoBoton: "Ver entrevista: Fotografía", videoId: "HpivXQTEt80" }
 ]
   },
 };
