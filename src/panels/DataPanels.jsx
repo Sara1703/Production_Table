@@ -22,7 +22,8 @@ export const DataPanels = {
     ],
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
-      disponible: false
+      disponible: true,
+      url:"/pdf/Lineamientos_CONTRAPLANO.pdf"
     }
   },
 
@@ -46,7 +47,8 @@ export const DataPanels = {
     ],
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
-      disponible: false
+      disponible: true,
+      url:"/pdf/Lineamientos_CONTRAPLANO.pdf"
     }
   },
 
@@ -65,7 +67,8 @@ export const DataPanels = {
     nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones.",
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
-      disponible: false
+      disponible: true,
+      url:"/pdf/Lineamientos_CONTRAPLANO.pdf"
     }
   },
 
@@ -83,7 +86,8 @@ export const DataPanels = {
     nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones.",
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
-      disponible: false
+      disponible: true,
+      url:"/pdf/Lineamientos_CONTRAPLANO.pdf"
     }
   },
 
@@ -192,7 +196,8 @@ export const DataPanels = {
       titulo: "Lineamientos de accesibilidad", 
       texto: "Documento de lineamientos para la producción audiovisual inclusiva.",
       url: "/pdf/Lineamientos.pdf", 
-      disponible: false 
+      disponible: true,
+      url:"/pdf/Lineamientos_CONTRAPLANO.pdf" 
     },
     entrevistas: [
       { titulo: "Guion", descripcion: "Desarrollo y preproducción", disponible: false },

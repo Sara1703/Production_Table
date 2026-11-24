@@ -176,14 +176,13 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                         </section>
                     )}
 
-                    {/* cualquier ventana diferente a recursos */}
                     {datos.lineamientos && datos.titulo !== "Recursos" && (
                         <section className="modal-seccion">
                             <h3>Lineamientos</h3>
                             <p className="texto-lineamientos">
                                 {datos.lineamientos.texto} ·{" "}
                                 {datos.lineamientos.disponible ? (
-                                    <a href={datos.lineamientos.url} target="_blank" rel="noreferrer">
+                                    <a href={datos.lineamientos.url} target="_blank" rel="noreferrer" className="dColor">
                                         Ver documento
                                     </a>
                                 ) : (
