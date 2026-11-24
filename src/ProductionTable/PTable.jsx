@@ -279,7 +279,7 @@ const PTable = () => {
                        
                         <A11y
                         role="button" 
-                        description={`${info.people.titulo}. ${info.people.texto}`}
+                        description={`${info.distribucion.titulo}. ${info.distribucion.texto}`}
                         actionCall={() => openPanel("distribucion")}
                         focusCall={() => anunciar("distribucion")}>
 
