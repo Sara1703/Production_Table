@@ -157,6 +157,31 @@ const PTable = () => {
         if (dato) handleHover(`${dato.titulo}. ${dato.texto}`)
     };
 
+    const tabKeyboard = (e) => {
+    if (e.key !== "Tab") return;
+
+    const f = document.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!f.length) return;
+
+    const enBorde = e.shiftKey
+        ? document.activeElement === f[0]
+        : document.activeElement === f[f.length - 1];
+
+    if (enBorde) {
+        e.preventDefault();
+        (e.shiftKey ? f[f.length - 1] : f[0]).focus();
+    }
+    };
+
+    useEffect(() => {
+    document.addEventListener("keydown", tabKeyboard);
+    return () => document.removeEventListener("keydown", tabKeyboard);
+    }, []);
+
+
+
     return(
         <main className="page">
             <header className="main">
