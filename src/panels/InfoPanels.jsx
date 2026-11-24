@@ -29,7 +29,10 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
             aria-modal="true" 
             aria-labelledby="panel-titulo"
         >
-            <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-card" 
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            >
                 <header className="modal-header">
                     <h2 id="panel-titulo" className="modal-titulo">{datos.titulo}</h2>
                     <button ref={closeBtnRef} className="btn-cerrar" onClick={onClose}>
@@ -164,7 +167,11 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                                         )}
                                         
                                         {ent.disponible ? (
-                                            <button className="btn-entrevista" onClick={() => onAbrirVideo(ent.videoId, `Entrevista: ${ent.titulo}`)}>
+                                            <button className="btn-entrevista"
+                                            onPointerDown={(e) => e.stopPropagation()}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                onAbrirVideo(ent.videoId, `Entrevista: ${ent.titulo}`)}}>
                                                 {ent.textoBoton}
                                             </button>
                                         ) : (
