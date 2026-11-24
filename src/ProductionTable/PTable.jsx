@@ -18,6 +18,7 @@ import InfoPanels from "../panels/InfoPanels";
 import { DataPanels } from "../panels/DataPanels";
 import VideoModal from "../panels/Video";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
+import CameraB from "../Objects/CameraB";
 
 
 const info = {
@@ -320,6 +321,10 @@ const PTable = () => {
                             <TP_visual scale={0.5} position={[-0.5, -0, -0.6]} rotation={[Math.PI /-80, -1.6, 0]} anunciar={anunciar} clave= "visual" openPanel={openPanel} seleccionado={grupoActivo}/>
                         
                         </A11y>    
+
+                        <A11y>
+                            <CameraB scale={0.2} position={[-0.36, -0.09, 1.01]} rotation={[Math.PI /-57, 4.7, 0]} seleccionado={grupoActivo}/>
+                        </A11y>
                         
                         <TableModel scale={0.5} position={[0, 0, 0]}/>
                     

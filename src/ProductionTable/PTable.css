@@ -55,34 +55,48 @@ html,body, #root {
  
 }
 
+.logos-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 34px;          
+  justify-content: flex-end;
+  padding: 13px 140px 0 0;
+}
+
 /*logos universidades*/
-.button_uao,
-.button_univalle{
-
-  background: none;
-  border: none;
+.button_univalle,
+.button_uao {
+  position: absolute;
+  top: 13px;
   padding: 0;
+  border: 0;
+  background: none;
+  line-height: 0;
   cursor: pointer;
-  transition: transform 0.2s;
-
-}
-.LogoU {
-  position: absolute;
-  top: 13px;
-  right: 140px;
-  height:100px;
-  width: auto;
-  object-fit: contain;
+  border-radius: 4px;
 }
 
+.button_univalle { right: 215px; }
+.button_uao      { right: 100px; }
+
+.LogoU,
 .LogoUAO {
-  position: absolute;
-  top: 13px;
-  right: 90px;
-  height:100px;
+  position: static;   /* ya no absolute */
+  display: block;
+  height: 100px;
   width: auto;
   object-fit: contain;
 }
+
+.button_univalle:hover,
+.button_univalle:focus-visible,
+.button_uao:hover,
+.button_uao:focus-visible {
+  background: #f3efef;
+  outline: 2px solid #fd2828;
+  outline-offset: 2px;
+}
+
 .mainTitle { 
 
   font-family: 'Inter', sans-serif;
@@ -168,26 +182,3 @@ html,body, #root {
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
 }
-
-/*
-                <p className="instructionB">Haz clic en una etapa o en cada personaje. También puedes usar los botones.</p>
-                <div className="panel_buttons">
-                    <button className={`one ${activo === "desarrollo" ? "one--active" : ""}`} onClick={() => handleText ("desarrollo")}>1. Desarrollo y preproducción</button>
-                    <button className={`one ${activo === "rodaje" ? "one--active" : ""}`} onClick={() => handleText ("rodaje")}>2. Rodaje</button>
-                    <button className={`one ${activo === "posproducción" ? "one--active" : ""}`} onClick={() => handleText ("posproducción")}>3. Posproducción</button>
-                    <button className={`one ${activo === "distribucion" ? "one--active" : ""}`} onClick={() => handleText ("distribucion")}>4. Distribución y exhibición</button>
-                </div>  
-                <div className="panel_Pbuttons">
-                    <button className={`two ${activo === "people" ? "one--active" : ""}`} onClick={() => handleText ("people")}>Personas participantes</button>
-                    <button className={`two ${activo === "visual" ? "one--active" : ""}`} onClick={() => handleText ("visual")}>Persona con discapacidad visual</button>
-                    <button className={`two ${activo === "auditiva" ? "one--active" : ""}`} onClick={() => handleText ("auditiva")}>Persona con discapacidad auditiva</button>
-                    <button className={`two ${activo === "motriz" ? "one--active" : ""}`} onClick={() => handleText ("motriz")}>Persona con discapacidad motriz</button>
-                    <button className={`two ${activo === "dispositivos" ? "one--active" : ""}`} onClick={() => handleText ("dispositivos")}>Comunicación mediante dispositivos</button>
-                </div>
-                {ficha && (
-                    <div className="ficha">
-                        <h3 className="ficha_titulo">{ficha.titulo}</h3>
-                        <p className="ficha_texto">{ficha.texto}</p>
-                    </div>
-
-                )}*/

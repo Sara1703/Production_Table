@@ -30,7 +30,7 @@ const VideoModal = ({ videoId, titulo, onClose }) => {
         </header>
 
         <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
-          {/* Intentamos incrustar el video */}
+
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} 
             title={titulo}
@@ -40,7 +40,6 @@ const VideoModal = ({ videoId, titulo, onClose }) => {
           ></iframe>
         </div>
 
-        {/* 👇 Mensaje de respaldo por si el video no se deja incrustar 👇 */}
         <div className="video-respaldo">
             <p className="texto-requiere-internet">
             La reproducción requiere internet.

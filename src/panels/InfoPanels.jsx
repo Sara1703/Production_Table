@@ -96,7 +96,6 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                                             );
                                         }
 
-                                        // 👇 CONDICIÓN PARA LOS AUTORES (UNIVALLE Y UAO) 👇
                                         if (item.email) {
                                             return (
                                                 <li key={index} style={{ 

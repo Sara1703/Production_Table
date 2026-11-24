@@ -14,10 +14,11 @@ export const DataPanels = {
     ],
     nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones.",
     entrevistas: [
-      { titulo: "Guion", disponible: false },
-      { titulo: "Dirección general", disponible: false },
+      { titulo: "Guion: Fotografía, guion y dirección", disponible: true, textoBoton: "Ver entrevista: Fotografía, guion, dirección", videoId: "HpivXQTEt80" },   
+      { titulo: "Guion: Realización y producción", disponible: true, textoBoton: "Ver entrevista: Realización, Producción, Dirección, Guión", videoId: "Izn4H3Qj9aw" },
+      { titulo: "Dirección general", disponible: true, textoBoton: "Ver entrevista: Dirección e Inclusión", videoId: "YHSkxUhG0vk"  },
       { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", videoId: "YFU7bhMC2OA" },
-      { titulo: "Dirección de fotografía", disponible: false }
+      { titulo: "Dirección de fotografía", disponible: true, textoBoton: "Ver entrevista: Fotografía", videoId: "HpivXQTEt80"}
     ],
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
@@ -39,9 +40,9 @@ export const DataPanels = {
     ],
     nota: "Los roles pueden variar según la obra y el tamaño del equipo. Una persona puede asumir varias funciones.",
     entrevistas: [
-      { titulo: "Dirección general", disponible: false },
+      { titulo: "Dirección general", disponible: true, textoBoton: "Ver entrevista: Dirección e Inclusión", videoId: "YHSkxUhG0vk"  },
       { titulo: "Dirección artística", disponible: true, textoBoton: "Ver entrevista: Dirección artística", videoId: "YFU7bhMC2OA" },
-      { titulo: "Dirección de fotografía", disponible: false }
+      { titulo: "Dirección de fotografía", disponible: true, textoBoton: "Ver entrevista: Fotografía", videoId: "HpivXQTEt80"}
     ],
     lineamientos: {
       texto: "Lineamientos de accesibilidad",
