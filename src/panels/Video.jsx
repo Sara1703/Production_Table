@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import "./Video.css"
 
 const VideoModal = ({ videoId, titulo, onClose }) => {
-  // Cerrar con la tecla Escape
+   
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") 
+        e.stopPropagation();
+        onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+  }, [onClose, videoId]);
 
   return (
     <div 
