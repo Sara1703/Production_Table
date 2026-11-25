@@ -18,7 +18,7 @@ import InfoPanels from "../panels/InfoPanels";
 import { DataPanels } from "../panels/DataPanels";
 import VideoModal from "../panels/Video";
 import { A11y, A11yAnnouncer } from "@react-three/a11y";
-import CameraB from "../Objects/CameraB";
+
 
 
 const info = {
@@ -217,9 +217,7 @@ const PTable = () => {
                 <p className="subTitle">
                     Una Cali audiovisual, inclusiva y accesible.
                 </p>
-                <p className="thirdTittle">
-                    Universidad del Valle · Universidad Autónoma de Occidente
-                </p>
+                
             </header>
             
             <div className="back">
@@ -347,9 +345,6 @@ const PTable = () => {
                         
                         </A11y>    
 
-                        <A11y>
-                            <CameraB scale={0.2} position={[-0.36, -0.09, 1.01]} rotation={[Math.PI /-57, 4.7, 0]} seleccionado={grupoActivo}/>
-                        </A11y>
                         
                         <TableModel scale={0.5} position={[0, 0, 0]}/>
                     
@@ -369,12 +364,14 @@ const PTable = () => {
             datos={panelActivo ? DataPanels[panelActivo] : null}
             onClose={closePanel}
             onAbrirVideo={abrirVideo}
+            videoAbierto={!!videoAbierto}
             />
             {modalAbierto && (
                 <InfoPanels
                 datos={DataPanels[modalAbierto]}
                 onClose={closeAll}
                 onAbrirVideo={abrirVideo}
+                videoAbierto={!!videoAbierto}
                 />
             )}
             {videoAbierto && (

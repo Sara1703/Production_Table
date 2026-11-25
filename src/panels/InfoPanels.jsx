@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./InfoPanels.css"
 
-const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
+const InfoPanels = ({datos, onClose, onAbrirVideo, videoAbierto}) => {
     const closeBtnRef = useRef(null);
 
     useEffect(() => {
@@ -12,12 +12,12 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
         }
 
         const handleKeyDown = (e) => {
-            if(e.key === "Escape") onClose();
+            if(e.key === "Escape" && !videoAbierto) onClose();
         };
 
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [datos, onClose]);
+    }, [datos, onClose, videoAbierto]);
 
     if (!datos) return null;
 
@@ -153,38 +153,61 @@ const InfoPanels = ({datos, onClose, onAbrirVideo}) => {
                     )}
 
                     {datos.entrevistas && datos.entrevistas.length > 0 && (
-                        <section className="modal-seccion">
-                            <h3>Entrevistas relacionadas</h3>
-                            <div className="entrevistas-grid">
-                                {datos.entrevistas.map((ent, index) => (
-                                    <div key={index} className="entrevista-card">
-                                        <h4>{ent.titulo}</h4>
-                                                                
-                                        {ent.descripcion && (
-                                            <p className="texto-descripcion-entrevista">
-                                                {ent.descripcion}
-                                            </p>
-                                        )}
-                                        
-                                        {ent.disponible ? (
-                                            <button className="btn-entrevista"
-                                            onPointerDown={(e) => e.stopPropagation()}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                onAbrirVideo(ent.videoId, `Entrevista: ${ent.titulo}`)}}>
-                                                {ent.textoBoton}
-                                            </button>
-                                        ) : (
-                                            <span className="texto-pendiente">Enlace pendiente</span>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
+    <section className="modal-seccion">
+        <h3>Entrevistas relacionadas</h3>
+        <div className="entrevistas-grid">
+            {datos.entrevistas.map((ent, index) => (
+                <div key={index} className="entrevista-card">
+                    <h4>{ent.titulo}</h4>
+
+                    {ent.descripcion && (
+                        <p className="texto-descripcion-entrevista">
+                            {ent.descripcion}
+                        </p>
                     )}
 
+                    {ent.disponible ? (
+                        <button className="btn-entrevista"
+                            onPointerDown={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onAbrirVideo(ent.videoId, `Entrevista: ${ent.titulo}`);
+                            }}>
+                            {ent.textoBoton}
+                        </button>
+                    ) : (
+                        <span className="texto-pendiente">Enlace pendiente</span>
+                    )}
+
+                    {ent.botones && ent.botones.length > 0 && (
+
+                        <div className="entrevista-botones-extra">
+                            {ent.botones.map((btn, i) => (
+                                <button
+                                    key={i}
+                                    className="btn-entrevista"
+                                    onPointerDown={(e) => e.stopPropagation()}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        onAbrirVideo(btn.videoId, btn.titulo || `Entrevista: ${ent.titulo}`);
+                                    }}
+                                >
+                                    {btn.etiqueta}
+                                    
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ))}
+        </div>
+    </section>
+)}
+
+
                     {datos.lineamientos && datos.titulo !== "Recursos" && (
-                        <section className="modal-seccion">
+                        <section className="modal-seccion"
+                        onClick={(e) => e.stopPropagation()}>
                             <h3>Lineamientos</h3>
                             <p className="texto-lineamientos">
                                 {datos.lineamientos.texto} ·{" "}

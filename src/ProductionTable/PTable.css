@@ -1,5 +1,5 @@
 html,body, #root {
-  margin: 0;
+  margin: 5px;
   padding: 0;
   height: 100%;
   overflow: hidden;
@@ -51,7 +51,7 @@ html,body, #root {
 
 .main {
 
-  flex: 0 0 auto;
+  flex: 0  auto;
  
 }
 
@@ -99,8 +99,9 @@ html,body, #root {
 
 .mainTitle { 
 
+  margin-top: 15px;
   font-family: 'Inter', sans-serif;
-  line-height: 1.0;
+  line-height: 0.5;
   font-size: 2.3rem;
   color: #0a0a0a;
   margin-left: 34px;
@@ -109,6 +110,7 @@ html,body, #root {
 .Mtitle{
     color: #be2727;
     font: inherit; 
+    line-height: 1.2;
 }
 
 .subTitle {
@@ -118,16 +120,6 @@ html,body, #root {
   margin-left: 34px;
   margin-top: -15px;
   color: #0a0a0a;
-  font-family: 'Inter', sans-serif;
-}
-
-.thirdTittle {
-
-  margin: 0 0 6px;
-  font-size: 0.8rem;
-  margin-left: 34px;
-  margin-top: 13px;
-  color: #504d4d;
   font-family: 'Inter', sans-serif;
 }
 
